@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/eare"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/total_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/suspected_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/cure_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/death_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_weight="1"/>
+
+</LinearLayout>
