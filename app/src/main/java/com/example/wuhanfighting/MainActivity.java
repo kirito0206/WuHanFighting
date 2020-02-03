@@ -221,11 +221,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onReceiveLocation(BDLocation bdLocation) {
             StringBuilder loc = new StringBuilder();
-            loc.append("您当前位置为：\n");
-            loc.append("国家：").append(bdLocation.getCountry()).append("\n");
+            loc.append(" 您当前位置为：\n");
+            loc.append(" 纬度：").append(bdLocation.getLatitude()).append(" ");
+            loc.append("经度：").append(bdLocation.getLongitude()).append("\n");
+            loc.append(" 国家：").append(bdLocation.getCountry()).append("   ");
             loc.append("省：").append(bdLocation.getCountry()).append("\n");
-            loc.append("市：").append(bdLocation.getCity()).append("\n");
+            loc.append(" 市级：").append(bdLocation.getCity()).append("   ");
             loc.append("区：").append(bdLocation.getDistrict()).append("\n");
+            loc.append(" 街道：").append(bdLocation.getStreet());
             locationText.setText(loc);
         }
     }
