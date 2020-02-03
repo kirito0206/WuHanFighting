@@ -1,5 +1,6 @@
 package com.example.wuhanfighting;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,11 +8,12 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHolder>{
 
-    private List<Province> provinceList;
+    private List<Province> provinceList = new ArrayList<>();
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         View provinceView;
@@ -40,12 +42,17 @@ public class ProvinceAdapter extends RecyclerView.Adapter<ProvinceAdapter.ViewHo
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.province_item,parent,false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.provinceView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.provinceView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 //获取view对应的位置
                 int position=holder.getLayoutPosition();
-                return true;
+                if(position == 0 || !provinceList.get(1).getProvince().equals("湖北"))
+                    return;
+                Intent intent = new Intent(MyApplication.getContext(),DetailActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("province",provinceList.get(position).getProvince());
+                MyApplication.getContext().startActivity(intent);
             }
         });
 

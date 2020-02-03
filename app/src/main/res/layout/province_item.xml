@@ -7,35 +7,37 @@
         android:id="@+id/eare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:gravity="center"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/total_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textColor="#990000"
+        android:textSize="28dp"
         android:gravity="center"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/suspected_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:gravity="center"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/cure_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="28dp"
+        android:textColor="#009933"
         android:gravity="center"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/death_number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="28dp"
         android:gravity="center"
         android:layout_weight="1"/>
 

@@ -7,7 +7,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class OkHttpRequest {
-    static  String responseData;
+    private static  String responseData;
+
     //发送网络请求访问接口
     static String sendRequestWithOkHttp(){
 
@@ -37,6 +38,10 @@ public class OkHttpRequest {
                 e.printStackTrace();
             }
         }
+        return responseData;
+    }
+
+    public static String getResponseData() {
         return responseData;
     }
 }
