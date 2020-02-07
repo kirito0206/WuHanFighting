@@ -1,6 +1,10 @@
 package com.example.wuhanfighting;
 
+import android.os.Message;
+import android.util.Log;
+
 import java.net.URL;
+import java.util.logging.Handler;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -10,7 +14,7 @@ public class OkHttpRequest {
     private static  String responseData;
 
     //发送网络请求访问接口
-    static String sendRequestWithOkHttp(){
+    static void sendRequestWithOkHttp(){
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -24,21 +28,16 @@ public class OkHttpRequest {
                             .build();
                     Response response = client.newCall(request).execute();
                     responseData = response.body().string();
-                    //将返回的数据分析
                 } catch (Exception e) {
                     e.printStackTrace();
+                }finally {
+                    Message msg = new Message();
+                    msg.what = 3;
+                    MainActivity.mHandler.sendMessage(msg);
                 }
             }
         });
         t.start();
-        while(t.isAlive()){
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return responseData;
     }
 
     public static String getResponseData() {

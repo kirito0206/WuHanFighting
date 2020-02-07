@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Province> provincesList = new ArrayList<>();
     private ProvinceAdapter adapter;
     private Province p;
-    private Handler mHandler;
+    static public Handler mHandler;
     private StringBuilder head  = new StringBuilder();
     private String time;
     private TextView locationText;
@@ -71,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
         //初始化地理位置
         initLocation();
         //访问接口获取数据
-        String response = OkHttpRequest.sendRequestWithOkHttp();
-        //解析获取的json数据
-        pareJSONData(response);
+        OkHttpRequest.sendRequestWithOkHttp();
     }
 
     @Override
@@ -95,15 +93,10 @@ public class MainActivity extends AppCompatActivity {
                 mHandler.sendMessage(msg);
                 break;
             case R.id.refresh:
-                Log.d("123",progressBar.getVisibility()+"");
                 if(progressBar.getVisibility() == View.GONE)
                     progressBar.setVisibility(View.VISIBLE);
-                Log.d("123",progressBar.getVisibility()+"");
                 //访问接口获取数据
-                String response = OkHttpRequest.sendRequestWithOkHttp();
-                //解析获取的json数据
-                pareJSONData(response);
-                Toast.makeText(MainActivity.this,"已刷新！！",Toast.LENGTH_SHORT).show();
+                OkHttpRequest.sendRequestWithOkHttp();
                 break;
         }
         return true;
@@ -138,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         cured = (TextView)findViewById(R.id.cured);
         progressBar = (ProgressBar)findViewById(R.id.progress_bar);
         progressBar.bringToFront();
-        progressBar.setVisibility(View.GONE);
     }
     private void initHandler(){
         //新建Handler对象
@@ -165,6 +157,11 @@ public class MainActivity extends AppCompatActivity {
                         new Record(time,p.getTotalNumber(),p.getSuspectedNumber(),p.getCureNumber(),p.getDeathNumber()).save();
                         Toast.makeText(MainActivity.this,"已保存当前数据！！",Toast.LENGTH_SHORT).show();
                     }
+                }
+                else if(msg.what == 3){
+                    //解析获取的json数据
+                    pareJSONData(OkHttpRequest.getResponseData());
+                    Toast.makeText(MainActivity.this,"已刷新！！",Toast.LENGTH_SHORT).show();
                 }
             }
         };
