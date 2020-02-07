@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/bg"
     tools:context=".MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
     <TextView
         android:id="@+id/location_view"
+        android:layout_below="@id/tool_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_shape1"
@@ -17,12 +30,15 @@
         android:layout_gravity="center"/>
     <TextView
         android:id="@+id/head_view"
+        android:layout_below="@id/location_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_shape1"
         android:textSize="20dp"
         android:layout_gravity="center"/>
     <LinearLayout
+        android:id="@+id/linear"
+        android:layout_below="@id/head_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -30,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button_shape1"
+            android:background="@drawable/shape2"
             android:layout_margin="3dp"
             android:gravity="center"
             android:text="\n国内\n病情\n"/>
@@ -39,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button_shape1"
+            android:background="@drawable/shape2"
             android:layout_margin="3dp"
             android:gravity="center"
             android:text="确诊人数"/>
@@ -48,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button_shape1"
+            android:background="@drawable/shape2"
             android:layout_margin="3dp"
             android:gravity="center"
             android:text="疑似人数"/>
@@ -57,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button_shape1"
+            android:background="@drawable/shape2"
             android:layout_margin="3dp"
             android:gravity="center"
             android:text="治愈人数"/>
@@ -66,12 +82,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/button_shape1"
+            android:background="@drawable/shape2"
             android:layout_margin="3dp"
             android:gravity="center"
             android:text="死亡人数"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/linear"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recycler_view"
         android:layout_margin="10dp"
@@ -79,4 +96,4 @@
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 
-</LinearLayout>
+</RelativeLayout>
