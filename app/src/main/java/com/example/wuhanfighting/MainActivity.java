@@ -140,12 +140,15 @@ public class MainActivity extends AppCompatActivity {
                 super.handleMessage(msg);
                 //更新UI
                 if(msg.what == 1) {
+                    //解析获取的json数据
+                    pareJSONData(OkHttpRequest.getResponseData());
                     headText.setText(head);
                     diagnosed.setText("\n已确诊总人数\n"+p.getTotalNumber()+"\n");
                     suspect.setText("\n疑似总人数\n"+p.getSuspectedNumber()+"\n");
                     death.setText("\n死亡总人数\n"+p.getDeathNumber()+"\n");
                     cured.setText("\n治愈总人数\n"+p.getCureNumber()+"\n");
                     adapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivity.this,"已刷新！！",Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
                 }
                 //保存
@@ -157,11 +160,6 @@ public class MainActivity extends AppCompatActivity {
                         new Record(time,p.getTotalNumber(),p.getSuspectedNumber(),p.getCureNumber(),p.getDeathNumber()).save();
                         Toast.makeText(MainActivity.this,"已保存当前数据！！",Toast.LENGTH_SHORT).show();
                     }
-                }
-                else if(msg.what == 3){
-                    //解析获取的json数据
-                    pareJSONData(OkHttpRequest.getResponseData());
-                    Toast.makeText(MainActivity.this,"已刷新！！",Toast.LENGTH_SHORT).show();
                 }
             }
         };
@@ -227,9 +225,6 @@ public class MainActivity extends AppCompatActivity {
                 provincesList.add(new Province(eare,total,suspected,cure,death));
             }
 
-            Message mes = new Message();
-            mes.what = 1;
-            mHandler.sendMessage(mes);
         } catch (Exception e) {
             e.printStackTrace();
         }

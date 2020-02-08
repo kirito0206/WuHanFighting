@@ -32,7 +32,7 @@ public class OkHttpRequest {
                     e.printStackTrace();
                 }finally {
                     Message msg = new Message();
-                    msg.what = 3;
+                    msg.what = 1;
                     MainActivity.mHandler.sendMessage(msg);
                 }
             }
